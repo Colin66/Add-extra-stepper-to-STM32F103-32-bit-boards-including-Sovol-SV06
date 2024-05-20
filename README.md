@@ -17,6 +17,7 @@ The 4 pin header in front of the display connector include 2 pins which can driv
 ![alt text](https://github.com/[Colin66]/[Add-extra-stepper-to-STM32F103-32-bit-boards-including-Sovol-SV06]/blob/[images]/e3_free_runs_UART_on_pins.png?raw=true)
 
 
+images/e3_free_runs_UART_on_pins.png
 
 
 
