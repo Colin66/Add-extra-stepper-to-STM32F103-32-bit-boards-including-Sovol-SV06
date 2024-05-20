@@ -131,7 +131,7 @@ runout_gcode:
 Double & triple check wiring, use a multimeter to check for solder bridges etc..
 Try DUMP_TMC STEPPER=stepper_z1 to see if the UART is communicating. 
 
-If your Z motors run out of sync or in different directions you'll damage your printer, so proceed slowly..
+## If your Z motors run out of sync or in different directions you'll damage your printer, so proceed slowly..
 
 I'd recommend buzzing the motors first to check it's connected.
 Then and try some small tentative Z movements after sending SET_KINEMATIC_POSITION (to avoid needing to home first). 
