@@ -1,5 +1,6 @@
 # Add-extra-stepper-to-STM32F103-32-bit-boards-including-Sovol-SV06
-How to add an extra stepper driver without soldering to mainboard, including full UART access
+
+## How to add an extra stepper driver without soldering to mainboard, including full UART access
 
 # 
 I recently bought a SV06 plus which like many printers has dual Z motors but only 4 drivers on the main board (X,Y,Z,E) and a Y shaped splitter cable driving both Z motors.
@@ -23,7 +24,7 @@ After investigation of the board schematics I found there is a pin assigned to X
 
 And this pin is broken out onto the +X limit switch 3 pin socket which on the SV06+ is the input for the filament sensor.  The relevant part of the schematic is here :
 
-![+X limit](images/e3 free runs X+ Limit.png)
+![+X limit](images/e3_free_runs_X+_Limit.png)
 
 To restore the filament runout sensor I routed this to the Z limit inputs, since stallguard isn't active on the Z axis and Z endstop is done via the bed level sensor so that pin is genuinely empty.  The filament sensor is just a microswitch between the two outer pins on the plug which closes when filament is present, so is compatible with the Z switch input.
 
