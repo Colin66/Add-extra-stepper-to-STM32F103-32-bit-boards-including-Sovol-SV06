@@ -40,5 +40,13 @@ Cautions :
 ![my wiring diagram](images/my_wiring_diagram.JPG)
 
 
+# Physical Build and Installation
 
+I built mine on a small piece of prototype board and reused an old stepper cable, one end to connect the Z1 motor and the other end to connect to the header near the display socket.  U hooked up the filament plug to the Z limit socket with dupont jumpers. It makes quite a nice self-contained add-on :
+
+![board](images/IMG_20240520_121145089.jpg)
+
+And is easily installed inside the mainboard case : 
+
+![fitted](images/IMG_20240520_124758095.jpg)
 
