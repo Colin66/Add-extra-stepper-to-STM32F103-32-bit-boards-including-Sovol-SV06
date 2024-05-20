@@ -28,6 +28,7 @@ And this pin is broken out onto the +X limit switch 3 pin socket which on the SV
 ![+X limit](images/e3_free_runs_X+_Limit.png)
 
 To restore the filament runout sensor I routed this to the Z limit inputs, since stallguard isn't active on the Z axis and Z endstop is done via the bed level sensor so that pin is genuinely empty.  The filament sensor is just a microswitch between the two outer pins on the plug which closes when filament is present, so is compatible with the Z switch input.
+The TMC documentation seems to say wiring MS1 & MS2 high aren't needed if using UART mode but I couldn't get it to run unless I did.
 
 # Wiring Diagram
 
@@ -49,4 +50,78 @@ I built mine on a small piece of prototype board and reused an old stepper cable
 And is easily installed inside the mainboard case : 
 
 ![fitted](images/IMG_20240520_124758095.jpg)
+
+# Klipper Configuration
+
+You may prefer different settings but here's what I did :
+
+[stepper_z1]
+step_pin: PA14
+dir_pin: !PA13
+enable_pin: !PC3
+microsteps: 32 #128 #64 #128 # 32 # 256 CB
+rotation_distance: 4
+endstop_pin: probe:z_virtual_endstop
+
+[tmc2209 stepper_z1]
+uart_pin: PA4 #filament sensor seems to be uart capable ? # replace  other z diag pin - didn't work, looks like not uart capable  ? # Y endstop
+run_current: 0.400  ##### I halved the run currents because we no longer have 2 motors in parallel
+hold_current: 0.2   ##### stepper with new driver was getting warm, not sure why, lowered hold current
+driver_PWM_AUTOGRAD: True
+driver_PWM_AUTOSCALE: True
+stealthchop_threshold: 9999999 #0 CB
+interpolate: True #False
+sense_resistor: 0.150
+uart_address: 3
+
+[stepper_z]
+step_pin: PB6
+dir_pin: !PB5
+enable_pin: !PC3
+microsteps: 32 #64 #128 #64 #128 # 32 # 256 CB
+rotation_distance: 4
+endstop_pin: probe:z_virtual_endstop
+position_min: -0.5
+position_max: 340 # NOTE You can adjust this if you have more room
+homing_speed: 7
+
+[tmc2209 stepper_z]
+uart_pin: PA15
+run_current: 0.4 #0.800   ##### I halved the run currents because we no longer have 2 motors in parallel
+#hold_current: 0.2
+stealthchop_threshold: 9999999 #0 CB
+interpolate: True #False
+sense_resistor: 0.150
+uart_address: 3
+#diag_pin: PA7
+
+[gcode_macro G34]
+gcode:
+ {% if printer.homed_axes != 'XYZ' %}
+    G28         #Home All Axes
+ {% endif %}
+ Z_TILT_ADJUST
+ G28 Z
+
+[z_tilt]
+z_positions:   ###### these identify the pivot points, usually the middle of the Z leadscrews
+  354, 170     ###### these are for my SV06 plus
+  -51, 170
+ points: 1, 170
+        247, 170 
+speed: 100
+horizontal_move_z: 5
+retries: 15
+retry_tolerance: 0.01
+
+[filament_switch_sensor filament_sensor]   
+switch_pin: !PA7    #pa7 is reassigned z diag but z doesn't use sensorless so no loss  #PA4 reassigned to z1 uart
+pause_on_runout: True
+insert_gcode:
+    { action_respond_info("Insert Detected") }
+runout_gcode:
+    { action_respond_info("Runout Detected") }
+    CONDITIONAL_BEEP i=3 dur=300 freq=400
+
+
 
