@@ -1,6 +1,7 @@
 # Add-extra-stepper-to-STM32F103-32-bit-boards-including-Sovol-SV06
 
-## How to add an extra stepper driver without soldering to mainboard, including full UART access
+## How to add an extra stepper driver without soldering to mainboard, including full UART access.
+** Use at your own risk **
 
 # 
 I recently bought a SV06 plus which like many printers has dual Z motors but only 4 drivers on the main board (X,Y,Z,E) and a Y shaped splitter cable driving both Z motors.
@@ -30,12 +31,13 @@ To restore the filament runout sensor I routed this to the Z limit inputs, since
 
 # Wiring Diagram
 
+Cautions : 
++ the pins on the header lead directly to the processor and ny errors could break your main board
++ different TMC boards are known to have the UART connection on diffreent pins with some jummpers on the rear to redirect them (discussion here : https://klipper.discourse.group/t/tmc-uart-wiring-and-pin-variations/11391) 
++ not all steppers motors have the same wiring, some have a crossed middle pair some don't - test with a meter
++ the 100uF capacitor should be close to the driver. Be sure to get it the right way around :)
+  
 ![my wiring diagram](images/my_wiring_diagram.JPG)
-
-
-
-
-
 
 
 
