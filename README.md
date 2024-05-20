@@ -128,11 +128,13 @@ runout_gcode:
 # Testing
 
 Double & triple check wiring, use a multimeter to check for solder bridges etc..
-Try DUMP_TMC STEPPER=stepper_z1 to see if the UART 
+Try DUMP_TMC STEPPER=stepper_z1 to see if the UART is communicating. 
+
 If your Z motors run out of sync or in different directions you'll damage your printer, so proceed slowly..
+
 I'd recommend buzzing the motors first to check it's connected.
 Then and try some small tentative Z movements after sending SET_KINEMATIC_POSITION (to avoid needing to home first). 
-I found the motor with the new controller ran hot.  There are a million and one TMC settings which I assume need tuning but I don't knw what they are.  If someone does, please let me know.
+I found the motor with the new controller ran hot.  There are a million and one TMC settings which I assume need tuning but I don't know what they are.  If someone does, please let me know.
 
 Klipper reference for Z-tilt is here :  https://www.klipper3d.org/Config_Reference.html#z_tilt
 
