@@ -14,7 +14,7 @@ https://www.reddit.com/r/ender3v2/comments/n3clew/ender_3v2_422427_board_tmc_uar
 The 4 pin header in front of the display connector include 2 pins which can drive the step and direction inputs and after investigation of the board schematics I found there is a pin assigned to X+ limit switch which is UART-capable.  https://github.com/CrealityOfficial/E3-Free-runs-Silent-Motherboard
 
 
-![alt text](https://github.com/[Colin66]/[Add-extra-stepper-to-STM32F103-32-bit-boards-including-Sovol-SV06]/blob/[images]/e3_free_runs_UART_on_pins.png?raw=true)
+![UART pins](images/e3_free_runs_UART_on_pins.png)
 
 
 images/e3_free_runs_UART_on_pins.png
