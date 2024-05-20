@@ -55,6 +55,7 @@ And is easily installed inside the mainboard case :
 
 You may prefer different settings but here's what I did :
 
+```
 [stepper_z1]
 step_pin: PA14
 dir_pin: !PA13
@@ -122,6 +123,6 @@ insert_gcode:
 runout_gcode:
     { action_respond_info("Runout Detected") }
     CONDITIONAL_BEEP i=3 dur=300 freq=400
-
+```
 
 
