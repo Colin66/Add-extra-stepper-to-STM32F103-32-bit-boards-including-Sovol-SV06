@@ -15,7 +15,8 @@ The 4 pin header in front of the display connector include 2 pins which can driv
 
 ![UART pins](images/e3_free_runs_UART_on_pins.png)
 
-![my wiring diagram](images/my wiring diagram.JPG)
+![my wiring diagram](images/my_wiring_diagram.JPG)
+
 
 
 
