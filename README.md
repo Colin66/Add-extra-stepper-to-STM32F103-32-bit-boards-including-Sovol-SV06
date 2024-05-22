@@ -97,13 +97,16 @@ sense_resistor: 0.150
 uart_address: 3
 #diag_pin: PA7
 
-[gcode_macro G34]
-gcode:
- {% if printer.homed_axes != 'XYZ' %}
-    G28         #Home All Axes
- {% endif %}
- Z_TILT_ADJUST
- G28 Z
+[gcode_macro G34]  # level z, home first if needed
+gcode: 
+ {% if printer.toolhead.homed_axes == "xyz" %}
+        M118 Printer is already homed, levelling z..
+        z_TILT_ADJUST
+    {% else %}
+        M118 Home all axes then level Z..
+        G28
+        z_TILT_ADJUST
+    {% endif %}
 
 [z_tilt]
 z_positions:   ###### these identify the pivot points, usually the middle of the Z leadscrews
