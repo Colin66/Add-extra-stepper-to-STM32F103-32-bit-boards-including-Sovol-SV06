@@ -38,7 +38,7 @@ Cautions :
 + not all steppers motors have the same wiring, some have a crossed middle pair some don't - test with a meter
 + the 100uF capacitor should be close to the driver. Be sure to get it the right way around :)
   
-![my wiring diagram](images/my_wiring_diagram.JPG)
+![my wiring diagram](images/images/my_wiring_diagram_linked.JPG)
 
 
 # Physical Build and Installation
