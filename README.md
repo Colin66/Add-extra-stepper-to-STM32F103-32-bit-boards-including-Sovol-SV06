@@ -128,9 +128,9 @@ runout_gcode:
     { action_respond_info("Runout Detected") }
     CONDITIONAL_BEEP i=3 dur=300 freq=400
 
-## ALSO : delete the mechanical_gantry_calibration.cfg file or change its name to something else ## 
+## ALSO : delete the mechanical_gantry_calibration.cfg file or change its name to something else and comment out the include statement in osskc.cfg  ## 
 ```
-Also you should delete the mechanical_gantry_calibration.cfg file or change its name to something else because it contains the g34 'crash the gantry into the top rail' alignment process which you don't want.
+Also you should delete the mechanical_gantry_calibration.cfg file or change its name to something else and comment out the include statement in osskc.cfg because that macro contains the g34 'crash the gantry into the top rail' alignment process which you don't want.
 
 # Testing
 
